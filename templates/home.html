@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>Covid-19 | Data Set</title>
+
+
+    <style>
+        .header{
+            background: radial-gradient(#fff, rgb(0, 92, 191));
+            color: #005cbf;
+            text-align: center;
+        }
+
+        .data{
+            padding: 50px 10%;
+        }
+
+        table{
+            background: radial-gradient(#fff, #fff6d2);
+        }
+        .card{
+            padding: 50px 50px;
+        }
+
+        .active{
+            color: red;
+            -webkit-box-shadow: inset -15px -9px 43px 5px rgba(255,117,135,1);
+            -moz-box-shadow: inset -15px -9px 43px 5px rgba(255,117,135,1);
+            box-shadow: inset -15px -9px 43px 5px rgba(255,117,135,1);
+        }
+
+        .confirmed{
+            color: darkorange;
+            -webkit-box-shadow: inset -15px -9px 43px 5px rgba(255,207,171,1);
+            -moz-box-shadow: inset -15px -9px 43px 5px rgba(255,207,171,1);
+            box-shadow: inset -15px -9px 43px 5px rgba(255,207,171,1);
+        }
+
+        .recovered{
+            color: lawngreen;
+            -webkit-box-shadow: inset -15px -9px 43px 5px rgba(199,250,170,1);
+            -moz-box-shadow: inset -15px -9px 43px 5px rgba(199,250,170,1);
+            box-shadow: inset -15px -9px 43px 5px rgba(199,250,170,1);
+        }
+
+        .deaths{
+            color: darkred;
+            -webkit-box-shadow: inset -15px -9px 43px 5px rgba(189,40,40,1);
+            -moz-box-shadow: inset -15px -9px 43px 5px rgba(189,40,40,1);
+            box-shadow: inset -15px -9px 43px 5px rgba(189,40,40,1);
+        }
+
+        span{
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        .row{
+            font-size: 24px;
+            padding: 0 10%;
+        }
+        
+        th{
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1 class="display-4">Covid-19 Cases in Different Countries</h1>
+    <hr>
+</div>
+
+<div class="row">
+    <div class="card active">
+        Total Active Cases <span> {{ total_active }}</span>
+    </div>
+    <div class="card confirmed">
+        Total Confirmed Cases <span> {{ total_confirmed }}</span>
+    </div>
+    <div class="card recovered">
+        Total Recovered Cases <span> {{ total_recovered }}</span>
+    </div>
+    <div class="card deaths">
+        Total Deaths Cases <span> {{ total_deaths }}</span>
+    </div>
+</div>
+<div class="data">
+    <table class="table">
+        <tr>
+            <th>Country</th>
+            <th>Confirmed</th>
+            <th>active</th>
+            <th>deaths</th>
+            <th>recovered</th>
+        </tr>
+        {% for i in country %}
+            <tr>
+                <td>{{ i.country }}</td>
+                <td>{{ i.confirmed }}</td>
+                <td>{{ i.active }}</td>
+                <td>{{ i.deaths }}</td>
+                <td>{{ i.recovered }}</td>
+            </tr>
+    {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>
